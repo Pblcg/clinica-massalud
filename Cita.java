@@ -1,23 +1,26 @@
+import java.time.LocalTime;
+import java.time.LocalDate;
+
 class Cita {
     private String paciente;
-    private String fecha;
-    private String hora;
+    private LocalDate fecha;
+    private LocalTime hora;
 
     public Cita(String paciente, String fecha, String hora) {
         this.paciente = paciente;
-        this.fecha = fecha;
-        this.hora = hora;
+        this.fecha = LocalDate.now();
+        this.hora = LocalTime.now();
     }
 
     public String getPaciente() {
         return paciente;
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public String getHora() {
+    public LocalTime getHora() {
         return hora;
     }
 }
