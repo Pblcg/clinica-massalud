@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 class Cita {
     private String paciente;
@@ -9,7 +10,7 @@ class Cita {
 
     public Cita(String paciente, String fecha, String hora) {
         this.paciente = paciente;
-        this.fecha = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("d/M/yyyy"));
+        this.fecha = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         this.hora = LocalTime.parse(hora, DateTimeFormatter.ofPattern("HH:mm"));
     }
 
@@ -17,11 +18,15 @@ class Cita {
         return paciente;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
+    public String getFecha() {
+        DateTimeFormatter esDateFormatLargo = DateTimeFormatter
+                .ofPattern("dd/MM/yyyy")
+                .withLocale(new Locale("es", "ES"));
+                
+        return "" + fecha.format(esDateFormatLargo);
     }
 
-    public LocalTime getHora() {
-        return hora;
+    public String getHora() {
+        return "" + hora;
     }
 }
